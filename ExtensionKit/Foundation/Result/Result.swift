@@ -15,3 +15,11 @@ public extension Result {
         }
     }
 }
+
+public extension Result where Success == Void {
+    static var success: Self { .success(()) }
+}
+
+public extension Result where Success == Any? {
+    static var success: Self { .success(nil) }
+}
