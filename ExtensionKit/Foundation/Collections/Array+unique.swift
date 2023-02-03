@@ -10,3 +10,10 @@ public extension Array where Element: Hashable {
         Array(Set(self))
     }
 }
+
+public extension Array {
+    func unique<T: Hashable>(by keyTransform: (Element) -> T) -> [Element] {
+        let unique = Set(map(keyTransform))
+        return filter { unique.contains(keyTransform($0)) }
+    }
+}
